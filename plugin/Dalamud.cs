@@ -140,7 +140,7 @@ namespace MaterialUI {
 					style.Colors["Border"] = accent;
 				}
 			} catch(Exception e) {
-				PluginLog.LogError(e, "Failed checking penumbra collection");
+				MaterialUI.pluginLog.Error(e, "Failed checking penumbra collection");
 			}
 			
 			// apply mod style edits
@@ -152,7 +152,7 @@ namespace MaterialUI {
 			style.Apply();
 			
 			// reflection garbage to save it
-			var ass = typeof(Dalamud.ClientLanguage).Assembly;
+			var ass = typeof(Dalamud.Game.ClientLanguage).Assembly;
 			var t = ass.GetType("Dalamud.Configuration.Internal.DalamudConfiguration");
 			var dalamudConfig = ass.GetType("Dalamud.Service`1").MakeGenericType(t)
 				.GetMethod("Get").Invoke(null, BindingFlags.Default, null, new object[] {}, null);
